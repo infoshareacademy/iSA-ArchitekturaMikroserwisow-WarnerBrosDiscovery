@@ -8,15 +8,18 @@ import {
   Delete,
   NotFoundException,
   ValidationPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UsersGuard } from './users.guard';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @UseGuards(UsersGuard)
   @Post()
   create(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
@@ -27,6 +30,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @UseGuards(UsersGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     try {
