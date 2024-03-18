@@ -16,7 +16,8 @@ const users = [
 @Injectable()
 export class UsersService {
   create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+    users.push({ ...createUserDto, id: users.length + 1 });
+    return createUserDto;
   }
 
   findAll() {
