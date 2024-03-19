@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { PaymentsModule } from './payments.module';
 import { Transport } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
+import { Logger } from 'nestjs-pino';
 
 async function bootstrap() {
   const app = await NestFactory.create(PaymentsModule);
@@ -15,6 +16,7 @@ async function bootstrap() {
     },
   });
 
+  await app.useLogger(app.get(Logger));
   await app.startAllMicroservices();
 }
 bootstrap();
