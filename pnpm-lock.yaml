@@ -13,6 +13,7 @@ specifiers:
   '@nestjs/schematics': ^10.0.0
   '@nestjs/testing': ^10.0.0
   '@types/bcryptjs': 2.4.6
+  '@types/cookie-parser': 1.4.7
   '@types/express': ^4.17.17
   '@types/jest': ^29.5.2
   '@types/node': ^20.3.1
@@ -24,6 +25,7 @@ specifiers:
   bcryptjs: 2.4.3
   class-transformer: 0.5.1
   class-validator: 0.14.1
+  cookie-parser: 1.4.6
   eslint: ^8.42.0
   eslint-config-prettier: ^9.0.0
   eslint-plugin-prettier: ^5.0.0
@@ -61,6 +63,7 @@ dependencies:
   bcryptjs: 2.4.3
   class-transformer: 0.5.1
   class-validator: 0.14.1
+  cookie-parser: 1.4.6
   express: 4.18.3
   joi: 17.12.2
   mongoose: 8.2.2
@@ -78,6 +81,7 @@ devDependencies:
   '@nestjs/schematics': 10.1.1_typescript@5.4.2
   '@nestjs/testing': 10.3.3_j7t7b7y6nby2hredhzby6eqtxu
   '@types/bcryptjs': 2.4.6
+  '@types/cookie-parser': 1.4.7
   '@types/express': 4.17.21
   '@types/jest': 29.5.12
   '@types/node': 20.11.28
@@ -1265,6 +1269,12 @@ packages:
       '@types/node': 20.11.28
     dev: true
 
+  /@types/cookie-parser/1.4.7:
+    resolution: {integrity: sha512-Fvuyi354Z+uayxzIGCwYTayFKocfV7TuDYZClCdIP9ckhvAu/ixDtCB6qx2TT0FKjPLf1f3P/J1rgf6lPs64mw==}
+    dependencies:
+      '@types/express': 4.17.21
+    dev: true
+
   /@types/cookiejar/2.1.5:
     resolution: {integrity: sha512-he+DHOWReW0nghN24E1WUqM0efK4kI9oTqDm6XmK8ZPe2djZ90BSNdGnIyCLzCPw7/pogPlGbzI2wHGGmi4O/Q==}
     dev: true
@@ -2332,8 +2342,21 @@ packages:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: true
 
+  /cookie-parser/1.4.6:
+    resolution: {integrity: sha512-z3IzaNjdwUC2olLIB5/ITd0/setiaFMLYiZJle7xg5Fe9KWAceil7xszYfHHBtDFYLSgJduS2Ty0P1uJdPDJeA==}
+    engines: {node: '>= 0.8.0'}
+    dependencies:
+      cookie: 0.4.1
+      cookie-signature: 1.0.6
+    dev: false
+
   /cookie-signature/1.0.6:
     resolution: {integrity: sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ==}
+
+  /cookie/0.4.1:
+    resolution: {integrity: sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==}
+    engines: {node: '>= 0.6'}
+    dev: false
 
   /cookie/0.5.0:
     resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
