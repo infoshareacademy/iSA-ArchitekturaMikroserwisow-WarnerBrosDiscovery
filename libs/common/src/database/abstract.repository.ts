@@ -23,7 +23,8 @@ export abstract class AbstractRepository<TDocument extends AbstractSchema> {
       this.logger.warn(
         `Document not found with query ${JSON.stringify(query)}`,
       );
-      throw new NotFoundException('Document not found');
+      throw new Error('Document not found');
+      // throw new NotFoundException('Document not found');
     }
 
     return doc;

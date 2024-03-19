@@ -3,10 +3,12 @@ import {
   ExecutionContext,
   Inject,
   Injectable,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { Observable, map, tap } from 'rxjs';
 import { AUTH_SERVICE } from '../constants';
+import { UserDto } from '../dto';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
@@ -18,11 +20,11 @@ export class JwtAuthGuard implements CanActivate {
     const jwt = context.switchToHttp().getRequest().cookies?.Authentication;
 
     if (!jwt) {
-      return false;
+      throw new UnauthorizedException('Unauthorized');
     }
-    console.log({ jwt });
+
     return this.authClient
-      .send('authenticate', {
+      .send<UserDto>('authenticate', {
         Authentication: jwt,
       })
       .pipe(
