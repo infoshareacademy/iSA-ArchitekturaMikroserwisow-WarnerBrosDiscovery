@@ -4,10 +4,11 @@ import { Logger } from 'nestjs-pino';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as cookieParser from 'cookie-parser';
+import { Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.create(AuthModule);
-
+  app.connectMicroservice({ transport: Transport.TCP });
   app.use(cookieParser());
   app.useGlobalPipes(
     new ValidationPipe({
@@ -18,5 +19,6 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   await app.listen(configService.get('PORT'));
+  await app.startAllMicroservices();
 }
 bootstrap();
